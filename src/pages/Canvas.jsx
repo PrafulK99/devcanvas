@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Canvas from '../components/canvas/Canvas';
 import useCanvasStore from '../store/useCanvasStore';
 
 export default function CanvasPage() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const { addNode } = useCanvasStore();
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col h-screen bg-gray-900">
@@ -20,7 +22,12 @@ export default function CanvasPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <h1 className="text-xl font-bold text-white">DevCanvas</h1>
+          <button
+            onClick={() => navigate('/')}
+            className="text-xl font-bold text-white hover:text-gray-200 transition-colors"
+          >
+            DevCanvas
+          </button>
         </div>
         <div className="flex items-center gap-4">
           <button className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors font-medium">
@@ -28,6 +35,12 @@ export default function CanvasPage() {
           </button>
           <button className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors font-medium">
             Export
+          </button>
+          <button
+            onClick={() => navigate('/')}
+            className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors font-medium"
+          >
+            Back
           </button>
         </div>
       </nav>
