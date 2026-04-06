@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import ReactFlow, {
   addEdge,
   applyNodeChanges,
@@ -9,9 +9,25 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import useCanvasStore from '../../store/useCanvasStore';
+import ApiNode from '../nodes/ApiNode';
+import DbNode from '../nodes/DbNode';
+import FunctionNode from '../nodes/FunctionNode';
+import BugNode from '../nodes/BugNode';
+import ExternalNode from '../nodes/ExternalNode';
 
 export default function Canvas() {
   const { nodes, edges, setNodes, setEdges } = useCanvasStore();
+
+  const nodeTypes = useMemo(
+    () => ({
+      api: ApiNode,
+      db: DbNode,
+      function: FunctionNode,
+      bug: BugNode,
+      external: ExternalNode,
+    }),
+    []
+  );
 
   const onNodesChange = useCallback(
     (changes) => setNodes(applyNodeChanges(changes, nodes)),
@@ -33,6 +49,7 @@ export default function Canvas() {
       <ReactFlow
         nodes={nodes}
         edges={edges}
+        nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}

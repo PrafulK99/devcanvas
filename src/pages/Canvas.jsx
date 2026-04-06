@@ -42,34 +42,40 @@ export default function CanvasPage() {
                 <h2 className="text-sm font-semibold text-gray-300 mb-2 uppercase tracking-wide">Nodes</h2>
                 <div className="space-y-2">
                   <button
-                    onClick={() => addNode({ label: 'New Node' })}
+                    onClick={() => addNode('api')}
                     className="w-full px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-colors"
                   >
                     + Add Node
                   </button>
                   <button
-                    onClick={() => addNode({ label: 'API Endpoint' })}
+                    onClick={() => addNode('api')}
                     className="w-full text-left px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200 text-sm font-medium transition-colors"
                   >
                     🔌 API
                   </button>
                   <button
-                    onClick={() => addNode({ label: 'Database' })}
+                    onClick={() => addNode('db')}
                     className="w-full text-left px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200 text-sm font-medium transition-colors"
                   >
                     💾 Database
                   </button>
                   <button
-                    onClick={() => addNode({ label: 'Function' })}
+                    onClick={() => addNode('function')}
                     className="w-full text-left px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200 text-sm font-medium transition-colors"
                   >
                     ⚙️ Function
                   </button>
                   <button
-                    onClick={() => addNode({ label: 'Bug Report' })}
+                    onClick={() => addNode('bug')}
                     className="w-full text-left px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200 text-sm font-medium transition-colors"
                   >
                     🐛 Bug
+                  </button>
+                  <button
+                    onClick={() => addNode('external')}
+                    className="w-full text-left px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200 text-sm font-medium transition-colors"
+                  >
+                    🌐 External
                   </button>
                 </div>
               </div>
